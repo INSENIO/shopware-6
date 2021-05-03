@@ -14,7 +14,8 @@ use PayonePayment\Storefront\Struct\CheckoutCartPaymentData;
 use RuntimeException;
 use Shopware\Core\Checkout\Cart\Cart;
 use Shopware\Core\Checkout\Cart\SalesChannel\CartService;
-use Shopware\Core\Checkout\Customer\SalesChannel\AccountRegistrationService;
+//use Shopware\Core\Checkout\Customer\SalesChannel\AccountRegistrationService;
+use Shopware\Core\Checkout\Customer\SalesChannel\RegisterRoute;
 use Shopware\Core\Checkout\Customer\SalesChannel\AccountService;
 use Shopware\Core\Framework\Context;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityRepositoryInterface;
@@ -51,8 +52,11 @@ class PaypalExpressController extends StorefrontController
     /** @var CartService */
     private $cartService;
 
-    /** @var AccountRegistrationService */
-    private $accountRegistrationService;
+//    /** @var AccountRegistrationService */
+//    private $accountRegistrationService;
+    /** @var RegisterRoute */
+    private $registerRoute;
+
 
     /** @var AccountService */
     private $accountService;
@@ -80,7 +84,8 @@ class PaypalExpressController extends StorefrontController
         PaypalExpressGetCheckoutDetailsRequestFactory $checkoutDetailsRequestFactory,
         PayoneClientInterface $client,
         CartService $cartService,
-        AccountRegistrationService $accountRegistrationService,
+//        AccountRegistrationService $accountRegistrationService,
+        RegisterRoute $registerRoute,
         AccountService $accountService,
         SalesChannelContextFactory $salesChannelContextFactory,
         EntityRepositoryInterface $salutationRepository,
@@ -93,7 +98,8 @@ class PaypalExpressController extends StorefrontController
         $this->checkoutDetailsRequestFactory = $checkoutDetailsRequestFactory;
         $this->client                        = $client;
         $this->cartService                   = $cartService;
-        $this->accountRegistrationService    = $accountRegistrationService;
+//        $this->accountRegistrationService    = $accountRegistrationService;
+        $this->registerRoute                 = $registerRoute;
         $this->accountService                = $accountService;
         $this->salesChannelContextFactory    = $salesChannelContextFactory;
         $this->salutationRepository          = $salutationRepository;
@@ -175,7 +181,8 @@ class PaypalExpressController extends StorefrontController
         }
 
         $customerDataBag = $this->getCustomerDataBagFromResponse($response, $context->getContext());
-        $customerId      = $this->accountRegistrationService->register($customerDataBag, true, $context);
+        // @todo fix this one AC
+        $customerId      = $this->registerRoute->register($customerDataBag, true, $context);
         $newContextToken = $this->accountService->login($response['addpaydata']['email'], $context, true);
 
         $newContext = $this->salesChannelContextFactory->create(
