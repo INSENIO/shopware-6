@@ -49,12 +49,12 @@ class ConfigInstaller implements InstallerInterface
     ];
 
     private const UPDATE_VALUES = [ // Updated for 6.2
-        'paymentStatusCapture'        => [StateMachineTransitionActions::ACTION_PAY => StateMachineTransitionActions::ACTION_PAID],
-        'paymentStatusPartialCapture' => [StateMachineTransitionActions::ACTION_PAY_PARTIALLY => StateMachineTransitionActions::ACTION_PAID_PARTIALLY],
-        'paymentStatusPaid'           => [StateMachineTransitionActions::ACTION_PAY => StateMachineTransitionActions::ACTION_PAID],
-        'paymentStatusUnderpaid'      => [StateMachineTransitionActions::ACTION_PAY_PARTIALLY => StateMachineTransitionActions::ACTION_PAID_PARTIALLY],
-        'paymentStatusDebit'          => [StateMachineTransitionActions::ACTION_PAY => StateMachineTransitionActions::ACTION_PAID],
-        'paymentStatusInvoice'        => [StateMachineTransitionActions::ACTION_PAY => StateMachineTransitionActions::ACTION_PAID],
+//        'paymentStatusCapture'        => [StateMachineTransitionActions::ACTION_PAY => StateMachineTransitionActions::ACTION_PAID],
+//        'paymentStatusPartialCapture' => [StateMachineTransitionActions::ACTION_PAY_PARTIALLY => StateMachineTransitionActions::ACTION_PAID_PARTIALLY],
+//        'paymentStatusPaid'           => [StateMachineTransitionActions::ACTION_PAY => StateMachineTransitionActions::ACTION_PAID],
+//        'paymentStatusUnderpaid'      => [StateMachineTransitionActions::ACTION_PAY_PARTIALLY => StateMachineTransitionActions::ACTION_PAID_PARTIALLY],
+//        'paymentStatusDebit'          => [StateMachineTransitionActions::ACTION_PAY => StateMachineTransitionActions::ACTION_PAID],
+//        'paymentStatusInvoice'        => [StateMachineTransitionActions::ACTION_PAY => StateMachineTransitionActions::ACTION_PAID],
     ];
 
     /** @var SystemConfigService */
