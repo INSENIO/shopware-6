@@ -1,5 +1,5 @@
 {
-    "name": "payone-gmbh/shopware-6",
+    "name": "insenio/shopware-6",
     "type": "shopware-platform-plugin",
     "description": "PAYONE Payment Plugin",
     "version": "2.1.0",
@@ -47,7 +47,7 @@
     "config": {
         "sort-packages": true,
         "platform": {
-            "php": "7.2.9"
+            "php": "7.2.9|8.0"
         }
     },
     "extra": {
